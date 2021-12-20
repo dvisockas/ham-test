@@ -15,10 +15,10 @@ b_level_category =
   categories.detect { |category| category['title'] == B_LEVEL_TEST }
 
 File.open(TARGET_FILENAME, 'w') do |file|
-  b_level_category['question'].each do |question_hash|
+  b_level_category['question'].each_with_index do |question_hash, index|
     question = question_hash['text']
     answer = question_hash['choice'][question_hash['answer'].to_i]
 
-    file.write("Q: #{question}\n\nA: #{answer}\n\n---\n")
+    file.write("#{index + 1}\n\nQ: #{question}\n\nA: #{answer}\n\n---\n")
   end
 end
