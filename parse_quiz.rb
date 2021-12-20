@@ -4,7 +4,7 @@ require 'active_support'
 require 'active_support/core_ext/hash'
 
 QUIZ_XML_FILENAME = 'quiz_example.xml'
-TARGET_FILENAME = 'qa.txt'
+TARGET_FILENAME = 'qa.md'
 B_LEVEL_TEST = 'B lygio testas'
 
 xml = File.read(QUIZ_XML_FILENAME)
@@ -19,6 +19,6 @@ File.open(TARGET_FILENAME, 'w') do |file|
     question = question_hash['text']
     answer = question_hash['choice'][question_hash['answer'].to_i]
 
-    file.write("Q: #{question}\nA: #{answer}\n\n")
+    file.write("Q: #{question}\n\nA: #{answer}\n\n---\n")
   end
 end
